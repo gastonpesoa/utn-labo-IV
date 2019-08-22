@@ -1,0 +1,9 @@
+CLASE 1:
+-------
+
+UI -> hacer algo, ese algo sea lo primero q vea
+Realizar interfaz de usuario
+
+2 TP obliagatorios
+-1ro sala de juegos
+-2do la comanda
