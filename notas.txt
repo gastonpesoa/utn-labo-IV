@@ -7,3 +7,8 @@ Realizar interfaz de usuario
 2 TP obliagatorios
 -1ro sala de juegos
 -2do la comanda
+
+
+ng g component componentes/bienvenido
+ng g class clases/ususario
+ng generate module app-routing --flat --module=app
