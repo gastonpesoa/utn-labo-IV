@@ -8,6 +8,19 @@ Realizar interfaz de usuario
 -1ro sala de juegos
 -2do la comanda
 
+Sala de juegos
+-cambiar imagenes
+-cambiar logica juegos
+-botones nuevos
+-acerca de foto nuestra y descripcion de lo que hace el juegos
+-se entrega antes del primer parcial
+
+clase 6 modelo
+clase 7 parcial
+
+TUTORIALES
+-tour of heros -> angular
+-chat -> firebase
 
 ng g component componentes/bienvenido
 ng g class clases/ususario
