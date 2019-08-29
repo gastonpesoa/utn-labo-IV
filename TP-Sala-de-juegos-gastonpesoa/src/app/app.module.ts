@@ -12,6 +12,7 @@ import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivin
 import { SimonDiceComponent } from './componentes/simon-dice/simon-dice.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
     AdivinaElNumeroComponent,
     SimonDiceComponent,
     MenuComponent,
-    CabeceraComponent
+    CabeceraComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
