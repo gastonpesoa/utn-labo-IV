@@ -1,29 +1,48 @@
-<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-primary">
-    <a class="navbar-brand" routerLink="/Principal">Inicio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="/Principal"><i class="fa fa-home"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" routerLink="/Juegos">Menu de juegos<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" routerLink="/Juegos/Agilidad">Agilidad</a>
-            <a class="nav-item nav-link" routerLink="/Juegos/Adivina">Adivina</a>
-            <a class="nav-item nav-link" routerLink="/Juegos/PiedraPapelTijera">Piedra Papel o Tijera</a>
-            <a class="nav-item nav-link" routerLink="/Juegos/Simon">Simón dice</a>
-            <!-- <a class="nav-item nav-link icon-con-borde" routerLink="/Juegos/Configuracion">
-                <i class="fa fa-cog"></i>
-            </a> -->
-            
-            <!-- <a class="nav-item nav-link" href="#">Agilidad+listado</a>
-            <a class="nav-item nav-link" href="#">Adivina+listado</a> -->
 
-            <!-- <span class="icon-con">
-               <a class="icon-con-borde nav-item nav-link" routerLink="/Juegos/Agilidad">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Juegos">Menú de Juegos</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Juegos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/Juegos/Agilidad">Agilidad</a>
+                    <a class="dropdown-item" routerLink="/Juegos/Adivina">Adivina</a>
+                    <a class="dropdown-item" routerLink="/Juegos/PiedraPapelTijera">Piedra Papel o Tijera</a>
+                    <a class="dropdown-item" routerLink="/Juegos/Simon">Simón dice</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Agilidad + listado</a>
+                    <a class="dropdown-item" href="#">Adivina + listado</a>
+                </div>
+            </li>
+            <li class="nav-item iconos-collapse">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fa fa-user"></i>
+                </a>
+            </li>
+            <li class="nav-item iconos-collapse">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
                     <i class="fa fa-cog"></i>
                 </a>
-            </span> -->
-        </div>
-        
-    </div>    
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-primary my-2 my-sm-0" >
+                <i class="fa fa-user"></i>
+            </button>
+            <button class="btn btn-primary my-2 my-sm-0" >
+                <i class="fa fa-cog"></i>
+            </button>
+        </form>
+    </div>
 </nav>
