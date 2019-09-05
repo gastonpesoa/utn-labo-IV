@@ -1,14 +1,15 @@
 footer{
     clear: both;
     width: 100%;
-    text-align: center;
+    text-align: justify;
     padding: .3em;
     margin-top: 1em;    
 }
 
-ul {
-    width: 30%;
+ul {    
     margin: auto;
+    padding: 0;
+    list-style-type: none;
 }
 
 ul li{
@@ -39,4 +40,8 @@ a{
     padding: .3em;
     border: #959595 solid 1px;
     border-radius: 4px;
+}
+
+footer p{
+    margin-left: 20px;
 }

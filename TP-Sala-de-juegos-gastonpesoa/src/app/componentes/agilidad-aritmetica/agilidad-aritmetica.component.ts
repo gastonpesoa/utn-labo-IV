@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegoAgilidad } from '../../clases/juego-agilidad';
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agilidad-aritmetica.component.css']
 })
 export class AgilidadAritmeticaComponent implements OnInit {
+
+  nuevoJuego: JuegoAgilidad;
 
   constructor() { }
 
