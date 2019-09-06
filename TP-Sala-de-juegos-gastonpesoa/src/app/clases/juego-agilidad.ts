@@ -2,49 +2,49 @@ import { Juego } from '../clases/juego';
 
 
 export class JuegoAgilidad extends Juego {
-    operadores: Array<string> = ["+", "-", "*", "/"];
+    operadores: Array<string> = ["+", "-", "*"];
     operador: string;
-    operandoUno: number;
+    operandoUno: number = 0;
     operandoDos: number;
     resultado: number;
-    operacion: any;
-    numeroIngresado: number;
+    numeroIngresado: number = 0;
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super("Adivina el número", gano, jugador);
+        super("Agilidad aritmética", gano, jugador);
     }
 
     public generarOperacion(): void {
-        this.operandoUno = Math.floor((Math.random() * 10) + 1);
+        this.operandoUno = Math.floor((Math.random() * 20) + 1);
         this.operandoDos = Math.floor((Math.random() * 10) + 1);
         this.operador = this.operadores[Math.floor(Math.random() * this.operadores.length)];
+        this.resultado = this.calcular();
+        console.info(this.operandoUno,this.operador,this.operandoDos,"=",this.resultado);
     }
 
-    public calcular(): void {
+    public calcular(): number {
+        let result: number;
         switch (this.operador) {
             case "+":
-                this.resultado = this.operandoUno + this.operandoDos;
+                result = this.operandoUno + this.operandoDos;
                 break;
             case "-":
-                this.resultado = this.operandoUno - this.operandoDos;
+                result = this.operandoUno - this.operandoDos;
                 break;
             case "*":
-                this.resultado = this.operandoUno * this.operandoDos;
-                break;
-            case "/":
-                this.resultado = this.operandoUno / this.operandoDos;
+                result = this.operandoUno * this.operandoDos;
                 break;
         }
+        return result;
     }
 
-    public verificar(){
+    public verificar(): boolean {
         if (this.numeroIngresado == this.resultado)
             this.gano = true;
-        if (this.gano) {
-            return true
-        }
-        else {
-            return false
-        };
+        this.operador = "";
+        this.operandoUno = 0;
+        this.operandoDos = 0;
+        this.resultado = 0;
+        this.numeroIngresado = 0;
+        return this.gano;
     }
 }
