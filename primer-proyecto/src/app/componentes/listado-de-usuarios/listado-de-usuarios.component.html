@@ -1,0 +1,20 @@
+<div>
+    <h2>Usuarios List</h2>
+    <!-- <div>
+        <label>Usuario name:
+            <input #usuarioName/>
+        </label>
+        <button (click)="add(heroName.value); heroName.value=''">
+            add
+        </button> 
+    </div>-->
+    <ul class="usuarios">
+        <li *ngFor="let usuario of usuarios">
+            <a href="#">
+                <span class="badge">{{usuario.clave}}</span> {{usuario.nombre}}
+            </a>
+            <button class="edit" title="edit usr"
+                (click)="editar(usuario)">Editar</button>
+        </li>
+    </ul>
+</div>

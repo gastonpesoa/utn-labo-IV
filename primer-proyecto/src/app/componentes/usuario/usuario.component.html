@@ -1,0 +1,27 @@
+<div>
+    <div *ngIf="usuarioIngresado==null">
+        <p><label>Usuario name:
+                <input #usuarioName />
+            </label></p>
+        <p><label>Usuario clave:
+                <input #usuarioClave />
+            </label></p>
+        <button (click)="add(usuarioName.value, usuarioClave.value); usuarioName.value=''; usuarioClave.value=''">
+            Registrarse
+        </button>
+    </div>
+    <div *ngIf="usuarioIngresado!=null">
+        <p><label>Usuario name:
+                <input *ngIf="usuarioIngresado!=null" [(ngModel)]="usuarioIngresado.nombre" />
+            </label></p>
+        <p><label>Usuario clave:
+                <input [(ngModel)]="usuarioIngresado.clave" />
+            </label></p>
+        <button (click)="clear()">
+            Cancelar
+        </button>
+    </div>
+</div>
+<!-- <app-listado-de-usuarios [usuarios]="usuarios"></app-listado-de-usuarios>
+<app-grilla [lista]="usuarios"></app-grilla>
+<app-card [usuario]="usuario"></app-card> -->
