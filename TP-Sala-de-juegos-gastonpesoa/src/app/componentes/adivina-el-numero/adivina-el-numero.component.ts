@@ -19,9 +19,17 @@ export class AdivinaElNumeroComponent implements OnInit {
     this.ocultarVerificar = false;
   }
 
+  setInputNumeroIngresado(){
+    setTimeout(()=>{
+      (<HTMLInputElement>document.getElementById("input-numero-ingresado")).value = null;
+      document.getElementById("input-numero-ingresado").focus();
+    }, 1);
+  }
+
   generarNumeroUsr() {
     this.nuevoJuego.generarNumero();
     this.contador = 0;
+    this.setInputNumeroIngresado();
   }
 
   verificarUsr() {
@@ -65,13 +73,14 @@ export class AdivinaElNumeroComponent implements OnInit {
 
   mostrarMensaje(mensaje: string = "este es el msg", ganador: boolean = false) {
     this.mensajes = mensaje;
-    var modelo = this;
     if (ganador) {
       this.toastr.success(mensaje, "¡Felicitaciones!");
     } else {
       this.toastr.error(mensaje, "Seguí participando");
     }
     this.ocultarVerificar = false;
+    this.setInputNumeroIngresado();
+    this.nuevoJuego.numeroIngresado = 0;
   }
 
   ngOnInit() {    

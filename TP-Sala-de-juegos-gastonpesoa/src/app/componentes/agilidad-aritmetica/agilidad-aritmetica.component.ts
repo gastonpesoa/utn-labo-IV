@@ -20,44 +20,46 @@ export class AgilidadAritmeticaComponent implements OnInit {
     this.nuevoJuego = new JuegoAgilidad();
   }
 
-  nuevo(): void {
-    this.enJuego = true;    
-    this.nuevoJuego.generarOperacion();
-    this.repetidor = setInterval(()=>{
+  setInputNumeroIngresado(){
+    setTimeout(()=>{
+      (<HTMLInputElement>document.getElementById("input-numero-ingresado")).value = null;
       document.getElementById("input-numero-ingresado").focus();
+    }, 1);
+  }
+
+  nuevo(): void {
+    this.setInputNumeroIngresado();
+    this.enJuego = true;
+    this.nuevoJuego.generarOperacion();
+    this.repetidor = setInterval(() => {
       this.tiempo--;
-      if(this.tiempo == 0){
+      if (this.tiempo == 0) {
         clearInterval(this.repetidor);
         this.verificar();
-        this.enJuego = true;
         this.tiempo = 5;
       }
-    }, 900);    
+    }, 900);
   }
 
-  verificar(){    
-    this.enJuego = true;
-    clearInterval(this.repetidor);
-    if(this.nuevoJuego.verificar()){
-      mensaje = "Ganaste un porrón";
-      bool = true;
-    }else{
-      if(!mensaje)
-        mensaje = "Andá a la escuela";
+  verificar() {
+    if (this.nuevoJuego.verificar()) {
+      this.mostrarMensaje("Ganaste un porrón", true);
+    } else {
+      this.mostrarMensaje("Andá a la escuela", false);
     }
-    this.mostrarMensaje(mensaje, bool);
+    this.enJuego = false;
+    this.nuevoJuego.reset();
   }
 
-  mostrarMensaje(mensaje: string = "este es el msg", ganador: boolean = false) {    
+  mostrarMensaje(mensaje: string = "este es el msg", ganador: boolean = false) {
     if (ganador) {
       this.toastr.success(mensaje, "¡Felicitaciones!");
     } else {
       this.toastr.error(mensaje, "Seguí participando");
     }
-    this.enJuego = false;
   }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
 }

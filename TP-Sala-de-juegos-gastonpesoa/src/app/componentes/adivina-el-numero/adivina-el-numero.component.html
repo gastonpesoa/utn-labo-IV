@@ -22,7 +22,7 @@
             <h6 *ngIf="nuevoJuego.numeroIngresado!=0" class="display-5">{{nuevoJuego.numeroIngresado}}</h6>
             <hr class="my-4">
             <p><i class="fa fa-spinner fa-spin">
-                </i>Esperando que ingrese un número</p>
+                </i>  Esperando que ingrese un número</p>
         </div>
         <h3 [hidden]="!nuevoJuego.gano">Adivinó el número</h3>
         <h3 *ngIf="nuevoJuego.numeroSecreto!=0" [hidden]="nuevoJuego.gano">Aún no ganó</h3>

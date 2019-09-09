@@ -10,11 +10,10 @@
     </div>-->
     <ul class="usuarios">
         <li *ngFor="let usuario of usuarios">
-            <a href="#">
-                <span class="badge">{{usuario.clave}}</span> {{usuario.nombre}}
-            </a>
-            <button class="edit" title="edit usr"
-                (click)="editar(usuario)">Editar</button>
+
+            <span class="badge">{{usuario.clave}}</span> {{usuario.nombre}}
+            <button class="edit" title="edit usr" (click)="editar(usuario)">Editar</button>
+
         </li>
     </ul>
 </div>

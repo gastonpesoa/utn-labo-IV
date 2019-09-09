@@ -9,7 +9,7 @@ import { Ususario } from '../../clases/ususario';
 export class UsuarioListadoComponent implements OnInit {
 
   usuarios: Array<Ususario> = [];
-  usuarioEdit: Ususario;
+  usuarioEdit: Ususario = new Ususario();
 
   constructor() { }
 

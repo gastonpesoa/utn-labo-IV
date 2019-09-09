@@ -2,12 +2,12 @@
     <div class="jumbotron">
         <h1 class="display-4">{{nuevoJuego.nombre}}</h1>
         <br>
-        <div *ngIf="nuevoJuego.operandoUno==0">
+        <div *ngIf="!enJuego">
             <p><button (click)="nuevo()" class="btn btn-primary btn-lg" type="button" id="button-nuevo">
                     Nuevo juego</button></p>
         </div>
         <br>
-        <div *ngIf="nuevoJuego.operandoUno!=0">
+        <div *ngIf="enJuego">
             <h2>{{nuevoJuego.operandoUno}} {{nuevoJuego.operador}} {{nuevoJuego.operandoDos}} = {{nuevoJuego.numeroIngresado}}</h2>
             <label for="input-numero-ingresado">Ingrese su respuesta: </label>
             <div class="input-group mb-3">
@@ -15,14 +15,14 @@
                     class="form-control" placeholder="Ingrese un número:" aria-label="Ingrese un número:"
                     aria-describedby="button-addon2">
             </div>
+            <div *ngIf="nuevoJuego.operandoUno!=0">
+                <h6 *ngIf="nuevoJuego.numeroIngresado!=0" class="display-5">{{nuevoJuego.numeroIngresado}}</h6>
+                <hr class="my-4">
+                <p><i class="fa fa-spinner fa-spin">
+                    </i> Te quedan <span style="font-weight: bold">{{tiempo}}</span> segundos</p>
+            </div>
         </div>
-        <div *ngIf="nuevoJuego.operandoUno!=0">
-            <h6 *ngIf="nuevoJuego.numeroIngresado!=0" class="display-5">{{nuevoJuego.numeroIngresado}}</h6>
-            <hr class="my-4">
-            <p><i class="fa fa-spinner fa-spin">
-                </i> Te quedan <span style="font-weight: bold">{{tiempo}}</span> segundos</p>
-        </div>
-        <h3 [hidden]="!nuevoJuego.gano">Adivinó el número</h3>
-        <h3 *ngIf="nuevoJuego.numeroIngresado!=0" [hidden]="nuevoJuego.gano">Aún no ganó</h3>
+        <!-- <h3 [hidden]="!nuevoJuego.gano">Adivinó el número</h3>
+        <h3 [hidden]="nuevoJuego.gano">No ganó</h3> -->
     </div>
 </div>
