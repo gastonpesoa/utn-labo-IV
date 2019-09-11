@@ -5,7 +5,7 @@ export class JuegoSimonDice extends Juego {
     secuenciaUsuario: Array<number> = [];
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super("Simón dice", gano, jugador);
+        super("Simón dice", true, jugador);
     }
 
     generarJugada() {
@@ -26,6 +26,6 @@ export class JuegoSimonDice extends Juego {
     reset() {
         this.secuencia = [];
         this.secuenciaUsuario = [];
-        this.gano = false;
+        this.gano = true;
     }
 }

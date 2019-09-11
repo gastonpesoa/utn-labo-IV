@@ -7,21 +7,21 @@
             <div class="container tablero">
                 <div class="row">
                     <div class="div-boton-juego col-6">
-                        <button (click)="registrarSecuenciaUsuario(1)" id="btn-verde"
+                        <button (click)="botonApretado(1)" id="btn-verde"
                             class="btn btn-success btn-md botones-juego bt"></button>
                     </div>
                     <div class="div-boton-juego col-6">
-                        <button (click)="registrarSecuenciaUsuario(2)" id="btn-rojo"
+                        <button (click)="botonApretado(2)" id="btn-rojo"
                             class="btn btn-danger btn-md botones-juego"></button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="div-boton-juego col-6">
-                        <button (click)="registrarSecuenciaUsuario(3)" id="btn-amarillo"
+                        <button (click)="botonApretado(3)" id="btn-amarillo"
                             class="btn btn-warning btn-md botones-juego"></button>
                     </div>
                     <div class="div-boton-juego col-6">
-                        <button (click)="registrarSecuenciaUsuario(4)" id="btn-azul"
+                        <button (click)="botonApretado(4)" id="btn-azul"
                             class="btn btn-primary btn-md botones-juego"></button>
                     </div>
                 </div>
@@ -29,8 +29,8 @@
             <div *ngIf="registrarSecuencia" class="label-jugadores row">
                 <label class="col-12">
                     <p>Repita la secuencia..</p>
-                    <p><i class="fa fa-spinner fa-spin">
-                        </i> Tiempo: <b>{{contador}}</b></p>
+                    <!-- <p><i class="fa fa-spinner fa-spin">
+                        </i> Tiempo: <b>{{contador}}</b></p> -->
                 </label>
             </div>
         </div>
