@@ -17,6 +17,8 @@ import { SimonDiceComponent } from './componentes/simon-dice/simon-dice.componen
 import { MenuComponent } from './componentes/menu/menu.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FooterComponent } from './componentes/footer/footer.component';
     SimonDiceComponent,
     MenuComponent,
     CabeceraComponent,
-    FooterComponent
+    FooterComponent,
+    AnagramaComponent,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,

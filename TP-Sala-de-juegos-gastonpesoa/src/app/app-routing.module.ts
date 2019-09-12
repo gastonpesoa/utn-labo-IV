@@ -8,6 +8,8 @@ import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/a
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { SimonDiceComponent } from './componentes/simon-dice/simon-dice.component';
+import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
       { path: 'Adivina', component: AdivinaElNumeroComponent },
       { path: 'Simon', component: SimonDiceComponent },
+      { path: 'Anagrama', component: AnagramaComponent },
+      { path: 'Tateti', component: TatetiComponent },
     ]
   },
 ];
