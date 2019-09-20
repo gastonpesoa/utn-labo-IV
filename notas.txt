@@ -25,3 +25,11 @@ TUTORIALES
 ng g component componentes/bienvenido
 ng g class clases/ususario
 ng generate module app-routing --flat --module=app
+
+
+aplicacion corse chromeº
+producto - por get y por post
+
+restcountries.eu
+superheroapi.com
+themoviedb.org

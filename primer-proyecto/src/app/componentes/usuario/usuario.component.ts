@@ -27,8 +27,8 @@ export class UsuarioComponent implements OnInit {
   add(nombre: string, clave: string): void {
     if (nombre && clave) {
       this.usuario = new Ususario();
-      this.usuario.nombre = nombre.trim();
-      this.usuario.clave = clave.trim()
+      this.usuario.username = nombre.trim();
+      this.usuario.password = clave.trim()
       this.seCreo.emit(this.usuario);
       // this.usuarios.push(this.usuario);
     }

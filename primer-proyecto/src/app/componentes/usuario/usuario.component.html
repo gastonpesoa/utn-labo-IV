@@ -1,5 +1,5 @@
 <div>
-    <div *ngIf="usuarioIngresado.nombre==null">
+    <div *ngIf="usuarioIngresado.username==null">
         <p><label>Usuario name:
                 <input #usuarioName />
             </label></p>
@@ -10,12 +10,12 @@
             Registrarse
         </button>
     </div>
-    <div *ngIf="usuarioIngresado.nombre!=null">
+    <div *ngIf="usuarioIngresado.username!=null">
         <p><label>Usuario name:
-                <input *ngIf="usuarioIngresado!=null" [(ngModel)]="usuarioIngresado.nombre" />
+                <input *ngIf="usuarioIngresado!=null" [(ngModel)]="usuarioIngresado.username" />
             </label></p>
         <p><label>Usuario clave:
-                <input [(ngModel)]="usuarioIngresado.clave" />
+                <input [(ngModel)]="usuarioIngresado.password" />
             </label></p>
         <button (click)="clear()">
             Cancelar

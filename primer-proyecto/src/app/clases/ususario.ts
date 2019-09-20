@@ -1,6 +1,6 @@
 export class Ususario {
-    nombre: string;
-    clave: string;
+    username: string;
+    password: string;
     constructor(){
     }
 }
