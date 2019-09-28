@@ -19,6 +19,7 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { AcercaComponent } from './componentes/acerca/acerca.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TatetiComponent } from './componentes/tateti/tateti.component';
     CabeceraComponent,
     FooterComponent,
     AnagramaComponent,
-    TatetiComponent
+    TatetiComponent,
+    AcercaComponent
   ],
   imports: [
     BrowserModule,

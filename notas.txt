@@ -33,3 +33,6 @@ producto - por get y por post
 restcountries.eu
 superheroapi.com
 themoviedb.org
+
+
+ng2-file-upload

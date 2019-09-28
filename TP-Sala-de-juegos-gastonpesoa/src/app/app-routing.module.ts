@@ -10,12 +10,13 @@ import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivin
 import { SimonDiceComponent } from './componentes/simon-dice/simon-dice.component';
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { AcercaComponent } from './componentes/acerca/acerca.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/Principal', pathMatch: 'full' },
   { path: 'Principal', component: PrincipalComponent },
-
+  { path: 'Acerca', component: AcercaComponent },
   {
     path: 'Juegos',
     component: JuegosComponent,
@@ -28,7 +29,7 @@ const routes: Routes = [
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'Tateti', component: TatetiComponent },
     ]
-  },
+  }
 ];
 
 @NgModule({

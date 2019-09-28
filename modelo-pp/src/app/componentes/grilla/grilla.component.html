@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>Lista de productos: </h2>
+    <ul class="productos">
+        <li *ngFor="let prod of productos">
+            <p>{{prod.descripcion}}</p>
+            <img src={{prod.imagen}} alt="">
+            <app-boton [btnProd]="prod" (recargarGrilla)="refrescarGrilla($event)"></app-boton>
+        </li>
+    </ul>
+</div>
