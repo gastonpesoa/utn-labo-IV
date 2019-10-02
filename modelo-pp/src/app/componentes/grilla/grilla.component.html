@@ -1,10 +1,34 @@
 <div class="container">
-    <h2>Lista de productos: </h2>
-    <ul class="productos">
-        <li *ngFor="let prod of productos">
-            <p>{{prod.descripcion}}</p>
-            <img src={{prod.imagen}} alt="">
-            <app-boton [btnProd]="prod" (recargarGrilla)="refrescarGrilla($event)"></app-boton>
-        </li>
-    </ul>
+    <div class="box">
+        <div class="row title"><h3>{{title}}</h3></div>
+        <div class="row card-text"><p>Productos disponibles para uso comercial.<br>Venta por mayor y menor</p></div>
+        <div class="row">
+            <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Fecha de Vencimiento</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let prod of productos">
+                    <th scope="row">{{prod.id}}</th>
+                    <td>{{prod.descripcion}}</td>
+                    <td>{{prod.tipo}}</td>
+                    <td>{{prod.fecha}}</td>
+                    <td>${{prod.precio}}</td>
+                    <td><img src={{prod.imagen}} alt=""></td>
+                    <td style="text-align: center; padding-top: 4.5%;">
+                        <app-boton [btnProd]="prod" (recargarGrilla)="refrescarGrilla($event)"></app-boton>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
 </div>

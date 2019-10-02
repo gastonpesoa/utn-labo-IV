@@ -1,0 +1,36 @@
+<div class="container box">
+    <div class="row title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+        <p>Venta de productos para uso comercial.<br>Disponibles al por mayor y menor</p>
+    </div>
+    <form [formGroup]="ventaForm" (ngSubmit)="altaVenta()" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="productoSel">Seleccione un producto: </label>
+            <select formControlName="producto" class="form-control" id="productoSel">
+                <option *ngFor="let prod of productos" value="{{prod.id}}">{{prod.descripcion}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="precio"><b>Cantidad:</b></label>
+            <input formControlName="cantidad" type="number" class="form-control" id="cantidad"
+                placeholder="Ingrese una cantidad:" required>
+            <div class="invalid-feedback">
+                Por favor ingrese cantidad
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="fehca"><b>Fecha de venta:</b></label>
+            <input formControlName="fechaVenta" type="date" class="form-control" id="fehcaVenta"
+                placeholder="Seleccione fecha de venta:" required>
+            <div class="invalid-feedback">
+                Por favor seleccione una fecha de venta
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!ventaForm.valid" class="btn btn-primary">Alta</button>
+    </form>
+</div>

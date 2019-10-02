@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="box">
+        <div class="row title">
+            <h3>{{title}}</h3>
+        </div>
+        <div class="row card-text">
+            <p>Productos disponibles para uso comercial.<br>Venta por mayor y menor</p>
+        </div>
+        <app-busqueda (productoEncontrado)="mostrarBusqueda($event)"></app-busqueda>
+        <div class="producto" *ngIf="producto">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src={{producto.imagen}} class="card-img" alt={{producto.descripcion}}>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.descripcion}}</h5>
+                            <p><span class="card-text"><b>Precio: </b></span>${{producto.precio}}</p>
+                            <p><span class="card-text"><b>Fecha de vto: </b></span>{{producto.fecha}}</p>
+                            <p><span class="card-text"><b>Tipo: </b></span>{{producto.tipo}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button (click)="limpiarBusqueda()" type="button" class="btn btn-warning">Limpiar busqueda</button>
+        </div>
+        <div *ngIf="alerta" class="alert alert-secondary" role="alert">
+            No se encontraró producto con esa descripción.
+        </div>
+    </div>
+</div>

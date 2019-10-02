@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../servicios/producto.service'
 import { Producto } from 'src/app/clases/producto';
 
+
 @Component({
   selector: 'app-grilla',
   templateUrl: './grilla.component.html',
@@ -9,10 +10,13 @@ import { Producto } from 'src/app/clases/producto';
 })
 export class GrillaComponent implements OnInit {
 
+  title: string;
   test: string
   productos: Producto[];
 
-  constructor(private prodServ: ProductoService) { }
+  constructor(private prodServ: ProductoService) {
+    this.title = "Listado";
+  }
 
   ngOnInit() {
     this.getProds();
@@ -23,7 +27,7 @@ export class GrillaComponent implements OnInit {
     // this.prodServ.getAll().subscribe(res => console.log(res));
   }
 
-  refrescarGrilla(prods){
+  refrescarGrilla(prods) {
     this.productos = prods;
   }
 

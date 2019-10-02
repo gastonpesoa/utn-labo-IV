@@ -1,0 +1,11 @@
+<div class="input-group mb-3">
+    <input [(ngModel)]="descripcion" type="text" class="form-control" placeholder="Ingrese la descripción del producto:"
+        aria-label="Ingrese la descripción del producto:" aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button (click)="buscar()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+            <span *ngIf="waiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <i *ngIf="!waiting" class="fa fa-search"></i> Buscar
+
+        </button>
+    </div>
+</div>
