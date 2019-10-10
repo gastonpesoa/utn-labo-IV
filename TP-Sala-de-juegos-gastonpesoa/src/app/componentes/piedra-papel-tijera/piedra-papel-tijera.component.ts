@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { DataService } from 'src/app/servicios/data.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -15,8 +17,14 @@ export class PiedraPapelTijeraComponent implements OnInit {
   imagenJugada: string = '../../../assets/imagenes/piedra.png';
   imagenJugadaUsario: string = '../../../assets/imagenes/tijera.png';
   jugadaSeleccionada: number;
+  contadorGanadas: number = 0;
+  contadorPerdidas: number = 0;
+  user: any;
 
-  constructor(private toastr: ToastrService) {
+  constructor(
+    private toastr: ToastrService,
+    private authService: AuthService,
+    private dataService: DataService) {
     this.nuevoJuego = new JuegoPiedraPapelTijera();
   }
 
@@ -55,12 +63,14 @@ export class PiedraPapelTijeraComponent implements OnInit {
     switch (this.nuevoJuego.resultado) {
       case -1:
         this.toastr.error("Fallaste esta vez", ":( :( :(");
+        this.contadorPerdidas++;
         break;
       case 0:
         this.toastr.warning("Intentalo de nuevo", "Es un empate");
         break;
       case 1:
         this.toastr.success("Ganaste un porrón", "¡Felicitaciones!");
+        this.contadorGanadas++;
         break;
     }
   }
@@ -93,7 +103,16 @@ export class PiedraPapelTijeraComponent implements OnInit {
     }
   }
 
+  getCurrentUserName(){
+    let user = this.authService.getCurrentUser();
+    this.dataService.getUserByUid(user.uid)
+      .subscribe(res => {
+        this.user = res;
+      })
+  }
+
   ngOnInit() {
+    this.getCurrentUserName();
   }
 
 }

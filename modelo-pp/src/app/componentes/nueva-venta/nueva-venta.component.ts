@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { VentaService } from 'src/app/servicios/venta.service';
-import { Producto } from 'src/app/clases/producto';
-import { Venta } from 'src/app/clases/venta';
+import { Pelicula } from 'src/app/clases/pelicula';
+import { Actor } from 'src/app/clases/actor';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -13,13 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NuevaVentaComponent implements OnInit {
 
-  title: string = "Registro de Venta";
-  productos: Producto[] = [];
+  title: string = "Registro de Actores";
 
-  ventaForm = new FormGroup({
-    producto: new FormControl(''),
-    fechaVenta: new FormControl(''),
-    cantidad: new FormControl('')
+  actorForm = new FormGroup({
+    nombre: new FormControl(''),
+    apellido: new FormControl(''),
+    nacionalidad: new FormControl(''),
+    fechaNac: new FormControl(''),
   });
 
   constructor(
@@ -29,21 +29,18 @@ export class NuevaVentaComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getAllProductos();
+    
   }
 
-  getAllProductos(){
-    this.prodServ.getAll().subscribe(res => this.productos = res);
-  }
-
-  altaVenta(){
-    console.warn(this.ventaForm.value);
-    const venta = new Venta();
-    venta.id = this.ventaForm.value.producto;
-    venta.cantidad = this.ventaForm.value.cantidad;
-    venta.fechaVenta = this.ventaForm.value.fechaVenta;
-    console.info("venta", venta);
-    this.ventaServ.alta(venta).subscribe(res => {
+  altaActor(){
+    console.warn(this.actorForm.value);
+    const actor = new Actor();
+    actor.nombre = this.actorForm.value.nombre;
+    actor.apellido = this.actorForm.value.apellido;
+    actor.nacionalidad = this.actorForm.value.nacionalidad;
+    actor.fechaNac = this.actorForm.value.fechaNac;
+    console.info("actor", actor);
+    this.ventaServ.alta(actor).subscribe(res => {
       this.toastr.success("Alta realizada!");
       console.info("res", res);
     });

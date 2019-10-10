@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/clases/producto';
+import { Pelicula } from 'src/app/clases/pelicula';
 
 @Component({
   selector: 'app-buscar',
@@ -8,25 +8,25 @@ import { Producto } from 'src/app/clases/producto';
 })
 export class BuscarComponent implements OnInit {
 
-  title: string = "Búsqueda de productos";
-  producto: Producto;
+  title: string = "Búsqueda de películas";
+  pelicula: Pelicula;
   alerta: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
-  mostrarBusqueda(prod: Producto){
+  mostrarBusqueda(peli: Pelicula){
     this.alerta = false;
-    if(prod != null){
-      this.producto = prod;
+    if(peli != null){
+      this.pelicula = peli;
     } else {
       this.alerta = true;
     }
   }
 
   limpiarBusqueda(){
-    this.producto = null;
+    this.pelicula = null;
     this.alerta = false;
   }
 

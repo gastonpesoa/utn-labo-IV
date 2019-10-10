@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductoService } from 'src/app/servicios/producto.service';
-import { Producto } from 'src/app/clases/producto';
+import { Pelicula } from 'src/app/clases/pelicula';
 import { map } from 'rxjs/operators'
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class BusquedaComponent implements OnInit {
 
   descripcion: string;
-  producto: Producto;
+  producto: Pelicula;
   waiting: boolean = false;
 
   @Output() productoEncontrado = new EventEmitter<string>();

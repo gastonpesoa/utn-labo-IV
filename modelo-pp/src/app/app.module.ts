@@ -27,6 +27,7 @@ import { NuevaVentaComponent } from './componentes/nueva-venta/nueva-venta.compo
 import { HomeComponent } from './componentes/home/home.component';
 import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { CardsComponent } from './componentes/cards/cards.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CardsComponent } from './componentes/cards/cards.component';
     NuevaVentaComponent,
     HomeComponent,
     CarouselComponent,
-    CardsComponent
+    CardsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

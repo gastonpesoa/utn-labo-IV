@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +23,9 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { AcercaComponent } from './componentes/acerca/acerca.component';
+import { firebaseConfig } from 'src/environments/environment';
+import { LoginComponent } from './componentes/login/login.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,9 @@ import { AcercaComponent } from './componentes/acerca/acerca.component';
     FooterComponent,
     AnagramaComponent,
     TatetiComponent,
-    AcercaComponent
+    AcercaComponent,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,11 @@ import { AcercaComponent } from './componentes/acerca/acerca.component';
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

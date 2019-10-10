@@ -11,7 +11,7 @@ export class CabeceraComponent implements OnInit {
   subtitle: string;
 
   constructor() {
-    this.title = "Administración de Productos";
+    this.title = "Administración de Películas";
     this.subtitle = "UTN FRA - Laboratorio IV";
   }
 

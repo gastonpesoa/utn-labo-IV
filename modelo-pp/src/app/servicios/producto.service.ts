@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
-import { Producto } from '../clases/producto';
+import { Pelicula } from '../clases/pelicula';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ProductoService {
     return this.data.buscar('pedido/buscar/' + desc);
   }
 
-  alta(prod: Producto) {
+  alta(prod: Pelicula) {
     return this.data.alta('pedido/new', prod);
   }
 

@@ -11,15 +11,22 @@ import { SimonDiceComponent } from './componentes/simon-dice/simon-dice.componen
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { AcercaComponent } from './componentes/acerca/acerca.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NologinGuard } from './guards/nologin.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/Principal', pathMatch: 'full' },
-  { path: 'Principal', component: PrincipalComponent },
+  { path: 'Principal', component: PrincipalComponent, canActivate: [AuthGuard] },
   { path: 'Acerca', component: AcercaComponent },
+  { path: 'login', component: LoginComponent, canActivate: [NologinGuard] },
+  { path: 'registro', component: RegistroComponent, canActivate: [NologinGuard] },
   {
     path: 'Juegos',
     component: JuegosComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: MenuCardComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Producto } from '../clases/producto';
+import { Pelicula } from '../clases/pelicula';
 
 const URL = 'http://localhost:80/LaComanda/public/';
 
@@ -17,10 +17,15 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getTest(method: string): Observable<any> {
-    return this.http.get<any>(URL + method)
+  login(path: string, username: string, password: string): Observable<any> {
+    let body = {
+      "username": username,
+      "password": password
+    }
+    console.info("body: ", body, "header: ", this.httpOptions);
+    return this.http.post<any>(URL + path, body, this.httpOptions)
       .pipe(res => res);
-    // .pipe(res => res, catchError(this.handleError<any>('getTest')));
+    // .pipe(res => res, catchError(this.handleError<any>('login')));
   }
 
   getAll(method: string): Observable<any> {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Producto } from 'src/app/clases/producto';
+import { Pelicula } from 'src/app/clases/pelicula';
 import { ProductoService } from 'src/app/servicios/producto.service';
 
 
@@ -10,7 +10,7 @@ import { ProductoService } from 'src/app/servicios/producto.service';
 })
 export class BotonComponent implements OnInit {
 
-  @Input() btnProd: Producto;
+  @Input() btnProd: Pelicula;
   @Output() recargarGrilla = new EventEmitter<string>();
 
   constructor(private prodServ: ProductoService) { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../servicios/producto.service'
-import { Producto } from 'src/app/clases/producto';
+import { Pelicula } from 'src/app/clases/pelicula';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class GrillaComponent implements OnInit {
 
   title: string;
   test: string
-  productos: Producto[];
+  productos: Pelicula[];
 
   constructor(private prodServ: ProductoService) {
     this.title = "Listado";

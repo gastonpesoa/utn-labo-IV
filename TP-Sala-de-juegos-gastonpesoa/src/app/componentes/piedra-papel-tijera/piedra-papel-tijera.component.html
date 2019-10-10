@@ -3,8 +3,8 @@
         <h1 class="display-4">{{nuevoJuego.nombre}}</h1>
         <br>
         <div class="label-jugadores row">
-            <label class="col-6"><b>Jugador</b></label>
-            <label class="col-6"><b>Oponente</b></label>
+            <label *ngIf="user" class="col-6"><b>{{user.nombre | titlecase}}: {{contadorGanadas}}</b></label>
+            <label class="col-6"><b>Oponente: {{contadorPerdidas}}</b></label>
         </div>
         <div class="row">
             <div class="col-6">

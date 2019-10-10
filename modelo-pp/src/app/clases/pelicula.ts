@@ -1,5 +1,6 @@
-export class Producto {
+export class Pelicula {
     id:number
+    idActor:number
     descripcion:string
     tipo:string
     fecha:Date

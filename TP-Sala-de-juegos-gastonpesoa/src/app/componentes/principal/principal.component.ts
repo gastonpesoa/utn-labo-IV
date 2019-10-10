@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { DataService } from 'src/app/servicios/data.service';
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor(private authService: AuthService, private dataService: DataService) { }
 
   ngOnInit() {
+    this.getCurrentUserName();
+  }
+
+  getCurrentUserName(){
+    let user = this.authService.getCurrentUser();
+    this.dataService.getUserByUid(user.uid)
+      .subscribe(res => {
+        this.user = res;
+      })
   }
 
 }

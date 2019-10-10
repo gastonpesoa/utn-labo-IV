@@ -1,1 +1,45 @@
-<p>listado-ventas works!</p>
+<div class="container">
+
+
+  <div class="box">
+    <div class="row title">
+      <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+      <p>Venta por mayor y menor</p>
+    </div>
+    <div class="row">
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nacionalidad</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Peliculas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actor of actores">
+            <td>{{actor.nombre}}</td>
+            <td>{{actor.apellido}}</td>
+            <td>{{actor.nacionalidad}}</td>
+            <td>{{actor.fechaNac}}</td>
+            <td>
+              <ul>
+                <!-- let subItem of item['nodes'] -->
+                <li *ngFor="let peli of actor.peliculas">
+                  <p>{{peli.pelicula}}</p>
+                  <img src={{peli.imagen}} alt="">
+                </li>
+              </ul>
+            </td>
+            <!-- <td style="text-align: center; padding-top: 4.5%;">
+                            <app-boton [btnProd]="prod" (recargarGrilla)="refrescarGrilla($event)"></app-boton>
+                        </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

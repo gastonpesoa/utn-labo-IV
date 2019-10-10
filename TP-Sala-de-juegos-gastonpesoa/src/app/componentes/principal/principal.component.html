@@ -1,5 +1,7 @@
-
 <div class="container">
+    <div class="row title">
+        <h4 *ngIf="user">Bienvenid@ {{user.nombre}}!</h4>
+    </div>
     <div class="list-group">
         <div class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-center">

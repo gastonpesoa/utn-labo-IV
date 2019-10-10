@@ -1,0 +1,22 @@
+<div class="box">
+    <div class="container">
+
+        <h1>LOGIN</h1>
+        <p>Nombre</p>
+        <input type="text" [(ngModel)]="usuario.username">
+        <p>Clave</p>
+        <input type="text" [(ngModel)]="usuario.password">
+        <!-- <button [@test]="isOpen ? 'open' : 'closed'" (click)="Ingresar()">Ingresar</button> -->
+        <button (click)="Ingresar()">Ingresar</button>
+
+        <div *ngIf="ingresado">
+            <p>{{usuario.username}}</p>
+            <p>{{usuario.password}}</p>
+        </div>
+
+        <div [hidden]="!ingresado">
+            <p>{{usuario.username}}</p>
+            <p>{{usuario.password}}</p>
+        </div>
+    </div>
+</div>
