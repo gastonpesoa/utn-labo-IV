@@ -4,4 +4,5 @@ export class Usuario {
     password: string;
     perfil: string;
     uid: string;
+    puntajes: any;
 }

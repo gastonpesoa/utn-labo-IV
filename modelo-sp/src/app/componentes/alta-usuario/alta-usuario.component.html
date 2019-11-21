@@ -1,0 +1,89 @@
+<div class="container box">
+    <div class="row title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+        <p>Registro para Alumnos, Profesores o Administradores.</p>
+    </div>
+    <form [formGroup]="altaUsuarioForm" (ngSubmit)="altaUsuario()" class="needs-validation" novalidate>
+
+        <!-- NOMBRE -->
+        <div class="form-group">
+            <label for="nombre"><b>Nombre:</b></label>
+            <input formControlName="nombre" type="text" class="form-control" id="nombre"
+                placeholder="Ingrese su nombre completo:" required>
+        </div>
+
+        <!-- NOMBRE DE USUARIO -->
+        <div class="form-group">
+                <label for="username"><b>Nombre de usuario:</b></label>
+                <input formControlName="username" type="text" class="form-control" id="username"
+                    placeholder="Ingrese su nombre de usuario:" required>
+            </div>
+
+        <!-- CORREO -->
+        <div class="form-group">
+            <label for="email"><b>Email:</b></label>
+            <input formControlName="email" type="email" class="form-control" id="email"
+                placeholder="Ingrese su correo electrónico:" required>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <label for="password"><b>Contraseña:</b></label>
+            <input formControlName="password" type="password" class="form-control" id="password"
+                placeholder="Ingrese su contraseña:" required>
+        </div>
+
+        <!-- FOTO -->
+        <div class="form-group">
+            <label for="foto"><b>Foto de perfil:</b></label>
+            <input type="file" class="form-control" id="foto" (change)="onFileInput($event)"
+                placeholder="Seleccione una imagen de perfil:">
+        </div>
+
+        <!-- PERFIL -->
+        <div class="form-group">
+            <label for="perfil">Seleccione un tipo de usuario: </label>
+            <select formControlName="tipo" class="form-control" id="perfil">
+                <option *ngFor="let perfil of perfiles" value="{{perfil}}">{{perfil}}</option>
+            </select>
+        </div>
+
+        <!-- GENERO -->
+        <div class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0"><b>Género:</b></legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input value="femenino" formControlName="genero" class="form-check-input" type="radio"
+                            id="femenino">
+                        <label class="form-check-label" for="femenino">
+                            Femenino
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="masculino" formControlName="genero" class="form-check-input" type="radio"
+                            id="masculino">
+                        <label class="form-check-label" for="masculino">
+                            Masculino
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="indefinido" formControlName="genero" class="form-check-input" type="radio"
+                            id="indefinido" required>
+                        <label class="form-check-label" for="indefinido">
+                            Indefinido
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!altaUsuarioForm.valid" class="btn btn-primary">Alta</button>
+    </form>
+
+    <div class="row card-text">
+        <p>¿Tienes una cuenta? <a [routerLink]="['/login']">Entrar</a></p>
+    </div>
+</div>

@@ -15,6 +15,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NologinGuard } from './guards/nologin.guard';
+import { ListadoComponent } from './componentes/listado/listado.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'Acerca', component: AcercaComponent },
   { path: 'login', component: LoginComponent, canActivate: [NologinGuard] },
   { path: 'registro', component: RegistroComponent, canActivate: [NologinGuard] },
+  { path: 'listado', component: ListadoComponent, canActivate: [AuthGuard] },
   {
     path: 'Juegos',
     component: JuegosComponent,

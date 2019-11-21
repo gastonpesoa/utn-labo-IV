@@ -1,0 +1,13 @@
+.float-right{
+    float: right;
+}
+
+.btn{
+    margin-left: 1em;
+}
+
+.clear-fix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

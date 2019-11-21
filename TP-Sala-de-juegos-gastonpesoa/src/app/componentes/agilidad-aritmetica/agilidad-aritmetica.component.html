@@ -8,7 +8,8 @@
         </div>
         <br>
         <div *ngIf="enJuego">
-            <h2>{{nuevoJuego.operandoUno}} {{nuevoJuego.operador}} {{nuevoJuego.operandoDos}} = {{nuevoJuego.numeroIngresado}}</h2>
+            <h2>{{nuevoJuego.operandoUno}} {{nuevoJuego.operador}} {{nuevoJuego.operandoDos}} =
+                {{nuevoJuego.numeroIngresado}}</h2>
             <label for="input-numero-ingresado">Ingrese su respuesta: </label>
             <div class="input-group mb-3">
                 <input id="input-numero-ingresado" [(ngModel)]="nuevoJuego.numeroIngresado" type="number"
@@ -22,7 +23,10 @@
                     </i> Te quedan <span style="font-weight: bold">{{tiempo}}</span> segundos</p>
             </div>
         </div>
-        <!-- <h3 [hidden]="!nuevoJuego.gano">Adivinó el número</h3>
-        <h3 [hidden]="nuevoJuego.gano">No ganó</h3> -->
+        <div [hidden]="!nuevoJuego.gano">
+            <h3>Acertaste!</h3>
+            <button class="btn btn-success" type="button" id="button-verificar" (click)="guardar()">Guardar
+                partida</button>
+        </div>
     </div>
 </div>

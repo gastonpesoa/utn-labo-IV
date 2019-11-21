@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { DataService } from 'src/app/servicios/data.service';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -13,14 +15,18 @@ export class AdivinaElNumeroComponent implements OnInit {
   mensajes: string;
   contador: number;
   ocultarVerificar: boolean;
+  user: any;
 
-  constructor(private toastr: ToastrService) {
+  constructor(
+    private toastr: ToastrService,
+    private authService: AuthService,
+    private dataService: DataService) {
     this.nuevoJuego = new JuegoAdivina();
     this.ocultarVerificar = false;
   }
 
-  setInputNumeroIngresado(){
-    setTimeout(()=>{
+  setInputNumeroIngresado() {
+    setTimeout(() => {
       (<HTMLInputElement>document.getElementById("input-numero-ingresado")).value = null;
       document.getElementById("input-numero-ingresado").focus();
     }, 1);
@@ -77,13 +83,33 @@ export class AdivinaElNumeroComponent implements OnInit {
       this.toastr.success(mensaje, "¡Felicitaciones!");
     } else {
       this.toastr.error(mensaje, "Seguí participando");
+      this.setInputNumeroIngresado();
     }
     this.ocultarVerificar = false;
-    this.setInputNumeroIngresado();
     this.nuevoJuego.numeroIngresado = 0;
   }
 
-  ngOnInit() {    
+  guardar(){
+    this.user.puntajes['adivina'] += 1;
+    this.dataService.updatePuntaje(this.user.uid, this.user.puntajes)
+      .then(() => {
+        this.toastr.success("Puntos guardados")
+      })
+      .catch(err => {
+        this.toastr.error("Al guardar: " + err.message, "Error");
+      })
+  }
+
+  getCurrentUser() {
+    let user = this.authService.getCurrentUser();
+    this.dataService.getUserByUid(user.uid)
+      .subscribe(res => {
+        this.user = res;
+      })
+  }
+
+  ngOnInit() {
+    this.getCurrentUser();
   }
 
 }

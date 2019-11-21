@@ -1,0 +1,40 @@
+<div class="container box">
+    <div class="row title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+        <p>Ingreso al sistema para Alumnos, Profesores o Administradores.</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="needs-validation" novalidate>
+
+        <!-- CORREO -->
+        <div class="form-group">
+            <label for="email"><b>Email:</b></label>
+            <input formControlName="email" type="email" class="form-control" id="email"
+                placeholder="Ingrese su correo electrónico:" required>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <label for="password"><b>Contraseña:</b></label>
+            <input formControlName="password" type="password" class="form-control" id="password"
+                placeholder="Ingrese su contraseña:" required>
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Ingresar</button>
+    </form>
+
+    <div class="row card-text">
+        <p>¿No tienes una cuenta? <a [routerLink]="['/alta-usuario']">Regístrate</a></p>
+    </div>
+</div>
+
+<div class="container box">
+    <div class="row card-text">
+        <select style="width: 80%;" class="form-control" id="ControlSelect" (change)="onChange($event.target.value)" placeholder="Usuario">
+            <option value="-1" disabled>Seleccioná un usuario: </option>
+            <option *ngFor="let usuario of usuariosLogin" value={{usuario.id}}>{{usuario.email}}
+            </option>
+        </select>
+    </div>
+</div>

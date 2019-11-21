@@ -1,0 +1,12 @@
+<ul *ngIf="isLoggedIn$ | async" class="nav navbar-light bg-light">
+    <li *ngFor="let page of pages" class="nav-item">
+        <a class="nav-link active" [routerLink]="page.url">{{ page.title }}</a>
+    </li>
+    <form class="form-inline my-2 my-lg-0">
+        <span class="username" *ngIf="usrName!=''">{{usrName}}</span>
+        <button class="btn btn-primary my-2 my-sm-0" title="Desconectarse" (click)="logOut()">
+            <i class="fa fa-sign-out"></i>
+        </button>
+    </form>
+
+</ul>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoSimonDice } from '../../clases/juego-simon-dice';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { DataService } from 'src/app/servicios/data.service';
 
 @Component({
   selector: 'app-simon-dice',
@@ -12,6 +14,9 @@ export class SimonDiceComponent implements OnInit {
   enJuego: boolean = false;
   repetidor: any;
   registrarSecuencia = false;
+  contador: number = 0;
+  user: any;
+  save: boolean = false;
 
   btnVerde: any = document.getElementById("btn-verde");
   btnRojo: any = document.getElementById("btn-rojo");
@@ -27,11 +32,14 @@ export class SimonDiceComponent implements OnInit {
   indice: number = -1;
   indiceUsr: number = -1;
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService, private authService: AuthService,
+    private dataService: DataService) {
     this.nuevoJuego = new JuegoSimonDice();
   }
 
   nuevo() {
+    this.save = false;
+    this.contador = 0;
     this.enJuego = true;
     this.nuevoJuego.reset();
     this.generarJugada();
@@ -162,12 +170,14 @@ export class SimonDiceComponent implements OnInit {
       this.showBoton(botonNumber, 900, false);
     }
     if(this.nuevoJuego.secuencia.length == this.indiceUsr + 1 && this.nuevoJuego.gano){
+      this.contador++;
       this.toastr.success("Continúa así", "Perfecto!");
       this.generarJugada();
     }
   }
 
   gameOver(botonNumber: number) {
+    this.save = true;
     this.showBoton(botonNumber, 1600, true);
     this.toastr.error("Al menos intentaste", "Asi no era..");
     this.enJuego = false;
@@ -177,7 +187,27 @@ export class SimonDiceComponent implements OnInit {
     this.registrarSecuencia = false;
   }
 
+  guardar(){
+    this.user.puntajes['simon'] += this.contador;
+    this.dataService.updatePuntaje(this.user.uid, this.user.puntajes)
+      .then(() => {
+        this.toastr.success("Puntos guardados")
+      })
+      .catch(err => {
+        this.toastr.error("Al guardar: " + err.message, "Error");
+      })
+  }
+
+  getCurrentUser() {
+    let user = this.authService.getCurrentUser();
+    this.dataService.getUserByUid(user.uid)
+      .subscribe(res => {
+        this.user = res;
+      })
+  }
+
   ngOnInit() {
+    this.getCurrentUser();
     setTimeout(()=>{
       this.deshabilitarBotones(true);
     },100)

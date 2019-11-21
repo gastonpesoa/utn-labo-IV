@@ -1,0 +1,54 @@
+<div class="box">
+    <div class="row title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+        <p>Materias primer y segundo cuatrimestre.</p>
+    </div>
+    <div class="row">
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cuatrimestre</th>
+                    <th scope="col">Cupos</th>
+                    <th scope="col">Profesor</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let materia of materias" [appHighlightCupo]="materia.cupos">
+                    <th scope="row">{{materia.id}}</th>
+                    <td>{{materia.nombre}}</td>
+                    <td>{{materia.cuatrimestre}}</td>
+                    <td >{{materia.cupos}}</td>
+                    <td>{{materia.profesor}}</td>
+                    <td [appHayCupo]="materia.cupos"></td>
+                    <td><button type="submit" (click)="inscribir(materia.id)" class="btn btn-success">Inscribir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--     
+    <input style="display: none;" type="number">
+
+    
+    <div class="form-group">
+        <label for="materia"><b>Materia:</b></label>
+        <select [(ngModel)]="materiaId" class="form-control" id="materia">
+            <option disabled value="-1">Seleccioná la materia: </option>
+            <option *ngFor="let materia of materias" value={{materia.id}}>{{materia.nombre}} - Cupos: {{materia.cupos}}
+            </option>
+        </select>
+    </div>
+
+    <div class="float-right">
+        <button type="submit" (click)="inscribir()" class="btn btn-success">Inscribir</button>
+    </div>
+    <div class="clear-fix"></div> -->
+
+</div>

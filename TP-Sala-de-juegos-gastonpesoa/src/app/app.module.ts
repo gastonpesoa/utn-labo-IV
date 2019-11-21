@@ -26,6 +26,7 @@ import { AcercaComponent } from './componentes/acerca/acerca.component';
 import { firebaseConfig } from 'src/environments/environment';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { ListadoComponent } from './componentes/listado/listado.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     TatetiComponent,
     AcercaComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

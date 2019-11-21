@@ -8,6 +8,10 @@
                     </i> Realice una jugada</p>
             </label>
         </div>
+        <div class="label-jugadores row">
+            <label *ngIf="user" class="col-6"><b>{{user.nombre | titlecase}}: {{contadorGanadas}}</b></label>
+            <label class="col-6"><b>Oponente: {{contadorPerdidas}}</b></label>
+        </div>
         <div *ngIf="enJuego" class="row tablero">
             <table class="table table-bordered col-sm-10 col-md-6 col-lg-6">
                 <tbody>
@@ -50,6 +54,10 @@
         <div class="row" *ngIf="nuevoJuego.juegoTerminado">
             <p><button (click)="nuevo()" class="btn btn-primary btn-lg" type="button" id="button-nuevo">
                     Nuevo juego</button></p>
+        </div>
+        <div *ngIf="save">
+            <button class="btn btn-success" type="button" id="button-verificar" (click)="guardar()">Guardar
+                partida</button>
         </div>
     </div>
 </div>

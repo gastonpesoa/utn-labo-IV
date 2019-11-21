@@ -1,0 +1,12 @@
+.navbar-brand:hover{
+    cursor: default;
+}
+
+.form-inline{
+    position: relative;
+    left: 60%;
+}
+
+.username{
+    margin-right: 15px;
+}

@@ -1,0 +1,14 @@
+<div id="page-container">
+    <div id="content-wrap">
+        <app-navbar></app-navbar>
+        <app-cabecera></app-cabecera>
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer id="footer"></app-footer>
+    <div class="spinner" *ngIf="spinnerServ.showSpinner">
+        <!-- <img src="../assets/spin.gif" alt="spinner"> -->
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+</div>

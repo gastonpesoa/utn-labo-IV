@@ -7,13 +7,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { DirectiveTestComponent } from './componentes/directive-test/directive-test.component';
 
 const routes: Routes = [
   { path: 'inicio', component: BienvenidoComponent, data: {animation: 'InicioPage'} },
   { path: 'login', component: LoginComponent, data: {animation: 'LoginPage'} },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'listado', component: UsuarioListadoComponent },
-  { path: 'countries', component: CountriesListComponent }
+  { path: 'countries', component: CountriesListComponent },
+  { path: '', component: DirectiveTestComponent },
 ]
 
 @NgModule({

@@ -20,6 +20,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   contadorGanadas: number = 0;
   contadorPerdidas: number = 0;
   user: any;
+  save: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -29,6 +30,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   }
 
   nuevo() {
+    this.save = false;
     this.stop = false;
     this.enJuego = true;
     this.repetidor = setInterval(() => {
@@ -39,6 +41,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
         this.setImagenes();
         clearInterval(this.repetidor);
         this.verificar();
+        this.save = true;
       }
     }, 80);
   }
@@ -103,7 +106,19 @@ export class PiedraPapelTijeraComponent implements OnInit {
     }
   }
 
-  getCurrentUserName(){
+  guardar(){
+    var result = this.contadorGanadas - this.contadorPerdidas;
+    this.user.puntajes['ppt'] += result;
+    this.dataService.updatePuntaje(this.user.uid, this.user.puntajes)
+      .then(() => {
+        this.toastr.success("Puntos guardados")
+      })
+      .catch(err => {
+        this.toastr.error("Al guardar: " + err.message, "Error");
+      })
+  }
+
+  getCurrentUser() {
     let user = this.authService.getCurrentUser();
     this.dataService.getUserByUid(user.uid)
       .subscribe(res => {
@@ -112,7 +127,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCurrentUserName();
+    this.getCurrentUser();
   }
 
 }

@@ -1,0 +1,26 @@
+#page-container {
+    position: relative;
+    min-height: 88vh;
+}
+  
+#content-wrap {
+    padding-bottom: 2.5rem;   
+}
+  
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+
+.spinner{
+    background-color:rgba(200, 200, 200, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120%;
+    width: 100%;
+    text-align: center;
+    padding-top: 50%;
+}

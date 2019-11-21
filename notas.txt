@@ -36,3 +36,11 @@ themoviedb.org
 
 
 ng2-file-upload
+
+auth0
+primeng --> templates de estilos onda material
+json2csv
+jspdf
+highcharts --> genera graficos
+
+angular2 jwt

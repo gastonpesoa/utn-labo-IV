@@ -1,0 +1,64 @@
+<div class="container box">
+    <div class="row title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row card-text">
+        <p>Registro de Materias para Administradores.</p>
+    </div>
+
+    <!-- ID -->
+    <input style="display: none;" type="number" *ngIf="materiaFromChild!=null" [(ngModel)]="materiaFromChild.id">
+
+    <!-- NOMBRE -->
+    <div class="form-group">
+        <label for="nombre"><b>Nombre:</b></label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre de la materia: "
+            [(ngModel)]="materiaFromChild.nombre">
+    </div>
+
+    <!-- CUATRIMESTRE -->
+    <div class="form-group">
+        <div class="row">
+            <legend style="margin-right:1em;" class="col-form-label col-sm-2 pt-0"><b>Cuatrimestre:</b></legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input value="primero" [(ngModel)]="materiaFromChild.cuatrimestre" class="form-check-input"
+                        type="radio" id="primero">
+                    <label class="form-check-label" for="primero">
+                        Primero
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input value="segundo" [(ngModel)]="materiaFromChild.cuatrimestre" class="form-check-input"
+                        type="radio" id="segundo">
+                    <label class="form-check-label" for="segundo">
+                        Segundo
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUPOS -->
+    <div class="form-group">
+        <label for="cupos"><b>Cupos:</b></label>
+        <input [(ngModel)]="materiaFromChild.cupos" type="number" class="form-control" id="cupos" min="1" max="100">
+    </div>
+
+    <!-- PROFESOR -->
+    <div class="form-group">
+        <label for="profesor"><b>Profesor:</b></label>
+        <select [(ngModel)]="materiaFromChild.profesor" class="form-control" id="profesor">
+            <option disabled value="-1">Seleccioná el profesor: </option>
+            <option *ngFor="let profesor of profesores" value={{profesor.nombre}}>{{profesor.nombre}}
+            </option>
+        </select>
+    </div>
+
+    <div class="float-right">
+        <button type="submit" (click)="limpiar()" class="btn btn-secondary">Limpiar</button>
+        <button type="submit" (click)="altaMateria()" class="btn btn-success">Guardar</button>
+    </div>
+    <div class="clear-fix"></div>
+
+</div>

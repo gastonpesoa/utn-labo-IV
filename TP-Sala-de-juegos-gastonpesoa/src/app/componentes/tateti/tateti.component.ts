@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoTateti } from '../../clases/juego-tateti';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { DataService } from 'src/app/servicios/data.service';
 
 @Component({
   selector: 'app-tateti',
@@ -14,8 +16,13 @@ export class TatetiComponent implements OnInit {
   cuentaMarcas: number = 0;
   imgCruz: string = '../../../assets/imagenes/cruz.png'
   imgCirculo: string = '../../../assets/imagenes/circulo.png'
+  save: boolean = false;
+  user: any;
+  contadorGanadas: number = 0;
+  contadorPerdidas: number = 0;
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService, private authService: AuthService,
+    private dataService: DataService) {
     this.nuevoJuego = new JuegoTateti();
   }
 
@@ -23,6 +30,7 @@ export class TatetiComponent implements OnInit {
     let row = Math.floor(Math.random() * 3);
     let col = Math.floor(Math.random() * 3);
     this.marcarJugada(row, col, true);
+    this.save = true;
   }
 
 
@@ -37,6 +45,7 @@ export class TatetiComponent implements OnInit {
         if(this.nuevoJuego.verificarTresEnLinea(this.imgCruz)){
           if(!this.nuevoJuego.verificar()){
             this.toastr.error("Perdedor..", "Te derrotaron");
+            this.contadorPerdidas++;
           }
         }
       }
@@ -51,12 +60,14 @@ export class TatetiComponent implements OnInit {
           }, 400);
         } else {
           this.toastr.success("Felicitaciones!", "Ganaste esta vez");
+          this.contadorGanadas++;
         }
       }
     }
   }
 
   nuevo() {
+    this.save = false;
     this.nuevoJuego.juegoTerminado = false;
     this.nuevoJuego.reset();
     this.enJuego = true;
@@ -64,7 +75,28 @@ export class TatetiComponent implements OnInit {
     this.cuentaMarcas = 0;
   }
 
+  guardar(){
+    var result = this.contadorGanadas - this.contadorPerdidas;
+    this.user.puntajes['tateti'] += result;
+    this.dataService.updatePuntaje(this.user.uid, this.user.puntajes)
+      .then(() => {
+        this.toastr.success("Puntos guardados")
+      })
+      .catch(err => {
+        this.toastr.error("Al guardar: " + err.message, "Error");
+      })
+  }
+
+  getCurrentUser() {
+    let user = this.authService.getCurrentUser();
+    this.dataService.getUserByUid(user.uid)
+      .subscribe(res => {
+        this.user = res;
+      })
+  }
+
   ngOnInit() {
+    this.getCurrentUser();
   }
 
 }

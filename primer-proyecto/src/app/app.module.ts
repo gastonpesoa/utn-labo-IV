@@ -17,6 +17,8 @@ import { CountriesListComponent } from './componentes/countries-list/countries-l
 
 import { CountriesServiceService } from './servicios/countries-service.service';
 import { MessageServiceService } from './servicios/message-service.service';
+import { HighlightDirective } from './directives/highlight.directive';
+import { DirectiveTestComponent } from './componentes/directive-test/directive-test.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MessageServiceService } from './servicios/message-service.service';
     ListadoDeUsuariosComponent,
     GrillaComponent,
     CardComponent,
-    CountriesListComponent
+    CountriesListComponent,
+    HighlightDirective,
+    DirectiveTestComponent
   ],
   imports: [
     BrowserModule,

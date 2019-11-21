@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="box">
+    <div class="row">
+      <div class="col-2">
+        <!-- FILTRO POR TIPO -->
+        <div class="form-group">
+          <div class="row">
+            <legend class="col-form-label pt-0"><b>Ver:</b></legend>
+            <div class="form-check">
+              <input value="0" class="form-check-input" type="radio" name="filtro"
+                (change)='onRadioChange(0)' id="todos">
+              <label class="form-check-label" for="todos">
+                Todos
+              </label>
+            </div>
+            <div class="form-check">
+              <input value="1" class="form-check-input" type="radio" name="filtro"
+                (change)='onRadioChange(1)' id="administradores">
+              <label class="form-check-label" for="administradores">
+                Administradores
+              </label>
+            </div>
+            <div class="form-check">
+              <input value="2" class="form-check-input" type="radio" id="alumnos" name="filtro"
+                (change)='onRadioChange(2)'>
+              <label class="form-check-label" for="alumnos">
+                Alumnos
+              </label>
+            </div>
+            <div class="form-check">
+              <input value="3" class="form-check-input" type="radio" id="profesores" name="filtro"
+                (change)='onRadioChange(3)'>
+              <label class="form-check-label" for="profesores">
+                Profesores
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10">
+        <div class="row title">
+          <h3>{{title}}</h3>
+        </div>
+        <div class="row card-text">
+          <p>Usuarios Registrados</p>
+        </div>
+        <div class="row">
+          <table style="margin-left: 2em;" class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Foto</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="filtroTodos">
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.tipo}}</td>
+                <img class="img-perfil"
+                  [src]="usuario.foto != null ? usuario.foto : '../../../assets/no-disponible.jpg'">
+              </tr>
+            </tbody>
+            <tbody *ngIf="filtroAdmin">
+              <tr *ngFor="let usuario of (usuarios | adminType)">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.tipo}}</td>
+                <img class="img-perfil"
+                  [src]="usuario.foto != null ? usuario.foto : '../../../assets/no-disponible.jpg'">
+              </tr>
+            </tbody>
+            <tbody *ngIf="filtroAlumnos">
+              <tr *ngFor="let usuario of (usuarios | alumnoType)">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.tipo}}</td>
+                <img class="img-perfil"
+                  [src]="usuario.foto != null ? usuario.foto : '../../../assets/no-disponible.jpg'">
+              </tr>
+            </tbody>
+            <tbody *ngIf="filtroProfes">
+              <tr *ngFor="let usuario of (usuarios | profesorType)">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.tipo}}</td>
+                <img class="img-perfil"
+                  [src]="usuario.foto != null ? usuario.foto : '../../../assets/no-disponible.jpg'">
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

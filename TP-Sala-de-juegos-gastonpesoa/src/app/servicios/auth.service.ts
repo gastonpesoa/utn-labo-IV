@@ -3,6 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore'
 
+interface IPuntajes {
+  agilidad: number;
+  adivina: number;
+  anagrama: number;
+  ppt: number;
+  simon: number;
+  tateti: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,7 +56,15 @@ export class AuthService {
           this.db.collection("usuarios").doc(res.user.uid).set({
             nombre: name,
             uid: uid,
-            perfil: 'usuario'
+            perfil: 'usuario',
+            puntajes : [
+              {'adivina': 0},
+              {'agilidad': 0},
+              {'anagrama': 0},
+              {'ppt': 0},
+              {'simon': 0},
+              {'tateti': 0},
+            ]
           })
           resolve(res)
         })
